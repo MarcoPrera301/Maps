@@ -15,8 +15,8 @@ public class InventoryManager {
         for (String line : data) {
             String[] parts = line.split("\\|");
 
-            String category = parts[0];
-            String product = parts[1];
+            String category = parts[0].trim().toLowerCase();
+            String product = parts[1].trim().toLowerCase();
 
             inventory.put(product, category);
         }
@@ -31,6 +31,12 @@ public class InventoryManager {
     }
 
     public void showInventory() {
+        for (Map.Entry<String, String> entry : inventory.entrySet()) {
+            System.out.println(entry.getKey() + " | " + entry.getValue());
+        }
+    }
+
+    public void showInventoryByCategory() {
         inventory.entrySet().stream().sorted(Map.Entry.comparingByValue())
             .forEach(e -> System.out.println(e.getKey() + "|" + e.getValue()));
     }

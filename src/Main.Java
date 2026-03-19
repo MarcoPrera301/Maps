@@ -19,27 +19,11 @@ public class Main {
                 option = 1;
             }
 
-        Map<String, String> inventory=MapFactory.getMap(option);
-        Map<String, Integer> stock=MapFactory.getMap(option);
+        Map<String, String> inventory = MapFactory.getMap(option);
+        Map<String, Integer> stock = MapFactory.getMap(option);
 
-        String[] data = ReadFile.readLines("ListadoProducto.txt");
-
-        for (String line : data) 
-            {
-                String[] parts = line.split("\\|");
-
-                String category = parts[0].trim().toLowerCase();
-                String product = parts[1].trim().toLowerCase();
-
-                // inventory: producto -> categoria
-                inventory.put(product, category);
-
-                // stock: producto -> 0
-                stock.put(product, 0);
-            }
-
-        StockManager Smanager = new StockManager(stock);
         InventoryManager Imanager = new InventoryManager(inventory);
+        StockManager Smanager = new StockManager(stock, Imanager);
 
         //interaccion usuario con inventario y stock
 
@@ -65,25 +49,32 @@ public class Main {
 
             switch(option){
                 case 1: 
-                String product="";
-                Smanager.addProduct(product);
-                break;
+                    System.out.print("Ingrese el producto: ");
+                    String product = sc.nextLine().trim().toLowerCase();
+                    Smanager.addProduct(product, 1);
+                    break;
                 case 2:
-                String product2="";
-                Imanager.showCategory(product2);
-                break;
+                    System.out.print("Ingrese el producto: ");
+                    String product2 = sc.nextLine().trim().toLowerCase();
+                    Imanager.showCategory(product2);
+                    break;
                 case 3:
-                Smanager.showStockData();
-                break;
+                    Smanager.showStockData();
+                    break;
                 case 4:
-                Smanager.showStockDataByCategory();
-                break;
+                    Smanager.showStockDataByCategory();
+                    break;
                 case 5:
-                Imanager.showInventory();
-                break;
+                    Imanager.showInventory();
+                    break;
                 case 6:
-                Imanager.showInventoryByCategory();
-                break;
+                    Imanager.showInventoryByCategory();
+                    break;
+                case 0:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción no válida");
             }
 
 
