@@ -49,31 +49,39 @@ public class Main {
 
             switch(option){
                 case 1: 
+                    System.out.println("");
                     System.out.print("Ingrese el producto: ");
                     String product = sc.nextLine().trim().toLowerCase();
                     Smanager.addProduct(product, 1);
                     break;
                 case 2:
+                    System.out.println("");
                     System.out.print("Ingrese el producto: ");
                     String product2 = sc.nextLine().trim().toLowerCase();
                     Imanager.showCategory(product2);
                     break;
                 case 3:
+                    System.out.println("");
                     Smanager.showStockData();
                     break;
                 case 4:
+                    System.out.println("");
                     Smanager.showStockDataByCategory();
                     break;
                 case 5:
+                    System.out.println("");
                     Imanager.showInventory();
                     break;
                 case 6:
+                    System.out.println("");
                     Imanager.showInventoryByCategory();
                     break;
                 case 0:
+                    System.out.println("");
                     System.out.println("Saliendo...");
                     break;
                 default:
+                    System.out.println("");
                     System.out.println("Opción no válida");
             }
 
