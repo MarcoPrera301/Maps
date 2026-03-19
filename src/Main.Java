@@ -22,6 +22,8 @@ public class Main {
         Map<String, String> inventory=MapFactory.getMap(option);
         Map<String, String> stock=MapFactory.getMap(option);
 
+        StockManager Smanager = new StockManager(stock);
+        InventoryManager Imanager = new InventoryManager(inventory);
 
         //interaccion usuario con inventario y stock
 
@@ -44,6 +46,30 @@ public class Main {
                 System.out.println("Entrada inválida");
                 continue;
             }
+
+            switch(option){
+                case 1: 
+                String product="";
+                Smanager.addProduct(product);
+                break;
+                case 2:
+                String product2="";
+                Imanager.showCategory(product2);
+                break;
+                case 3:
+                Smanager.showStockData();
+                break;
+                case 4:
+                Smanager.showStockDataByCategory();
+                break;
+                case 5:
+                Imanager.showInventory();
+                break;
+                case 6:
+                Imanager.showInventoryByCategory();
+                break;
+            }
+
 
         }
 
