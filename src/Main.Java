@@ -20,7 +20,23 @@ public class Main {
             }
 
         Map<String, String> inventory=MapFactory.getMap(option);
-        Map<String, String> stock=MapFactory.getMap(option);
+        Map<String, Integer> stock=MapFactory.getMap(option);
+
+        String[] data = ReadFile.readLines("ListadoProducto.txt");
+
+        for (String line : data) 
+            {
+                String[] parts = line.split("\\|");
+
+                String category = parts[0].trim().toLowerCase();
+                String product = parts[1].trim().toLowerCase();
+
+                // inventory: producto -> categoria
+                inventory.put(product, category);
+
+                // stock: producto -> 0
+                stock.put(product, 0);
+            }
 
         StockManager Smanager = new StockManager(stock);
         InventoryManager Imanager = new InventoryManager(inventory);

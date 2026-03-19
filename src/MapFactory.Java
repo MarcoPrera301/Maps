@@ -4,7 +4,7 @@ import java.util.TreeMap;
 import java.util.LinkedHashMap;
 
 public class MapFactory {
-    public static Map<String, String> getMap(int opcion) {
+    public static <K, V> Map<K, V> getMap(int opcion) {
         switch (opcion) {
             case 1: return new HashMap<>();
             case 2: return new TreeMap<>();
