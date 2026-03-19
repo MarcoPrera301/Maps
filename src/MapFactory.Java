@@ -1,11 +1,14 @@
-public class MapFactory {
-    public static Map<String, String> getMap(String map) {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
-        String opcion = map.toLowerCase();
+public class MapFactory {
+    public static Map<String, String> getMap(int opcion) {
         switch (opcion) {
-            case "hashmap": return new HashMap<>();
-            case "treemap": return new TreeMap<>();
-            case "linkedhashmap": return new LinkedHashMap<>();
+            case 1: return new HashMap<>();
+            case 2: return new TreeMap<>();
+            case 3: return new LinkedHashMap<>();
             default: return new HashMap<>();
         }
     }
